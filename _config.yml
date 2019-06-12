@@ -20,7 +20,7 @@ description:
   <br />
   Designed for companies as an internal communication system
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://notification-system.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 repository: notification-system/notification-system.github.io
 github: [metadata]
 
