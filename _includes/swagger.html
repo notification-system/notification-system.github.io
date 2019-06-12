@@ -38,7 +38,7 @@
   <script>
     window.onload = function () {
       const ui = SwaggerUIBundle({
-        url: "http://localhost:4000/api/swagger.yaml",
+        url: "{{site.baseurl}}/api/swagger.yaml",
         dom_id: '#swagger-ui',
         presets: [
           SwaggerUIBundle.presets.apis,
