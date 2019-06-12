@@ -1,0 +1,9 @@
+@import "{{ site.theme }}";
+
+.rpad {
+    padding-right: 1em;
+}
+
+#main_content, .inner {
+    max-width: 80% !important;
+}
