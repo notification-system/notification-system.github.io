@@ -54,3 +54,7 @@ Here #{name}# is a dynamic variable and should be provided when the user actuall
 `#{text}#`
 
 Mentioned above is a valid Email Text, it means you will provide text when you will be sending an email. In one text you can use several environment variables. NoSy can send html emails too. So if you provide in text the field html message it will be sent as an html email. The last part in our menu is Manual Send Email. Here you can test your template by actually sending it. To send it you have to provide Input System and Email Template name as well as login details of your email if you didn't pick Default Provider. Nosy doesn't log any username and password; for this reason every time you send an email you have to provide them. And final note: if you have dynamic variables you have to specify the name and the value of these variables.
+
+#### **1.3 E-mail Groups**
+
+The back end supports creating e-mail groups instead of inputting the e-mail addresses one by one. The end points are described in the Swagger documentation. There are two end points for creating a group, one where you input Base64-encoded data of the addresses, and one which takes a list of actual e-mail addresses as argument. For updating the addresses you can either use the PUT-call end point to replace the addresses, or the PATCH-call to add new ones.

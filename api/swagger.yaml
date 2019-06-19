@@ -13,8 +13,12 @@ basePath: /
 tags:
   - name: auth-controller
     description: Auth Controller
+  - name: basic-error-controller
+    description: Basic Error Controller
   - name: email-admin-controller
     description: Email Admin Controller
+  - name: email-collection-controller
+    description: Email Collection Controller
 paths:
   /api/v1/nosy/auth/logout:
     get:
@@ -52,7 +56,7 @@ paths:
           description: token
           required: true
           schema:
-            type: string
+            $ref: '#/definitions/TokenCollectionDto'
       responses:
         '200':
           description: OK
@@ -88,7 +92,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/ClientToken'
+            $ref: '#/definitions/TokenCollectionDto'
         '201':
           description: Created
         '401':
@@ -97,6 +101,206 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+      deprecated: false
+  /api/v1/nosy/emailgroups:
+    get:
+      tags:
+        - email-collection-controller
+      summary: getAllEmailCollections
+      operationId: getAllEmailCollectionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EmailCollectionDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    post:
+      tags:
+        - email-collection-controller
+      summary: uploadEmailCollection
+      operationId: uploadEmailCollectionUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: emailCollectionFileEncodedDto
+          description: emailCollectionFileEncodedDto
+          required: true
+          schema:
+            $ref: '#/definitions/EmailCollectionFileEncodedDto'
+        - name: name
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailCollectionDto'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - email-collection-controller
+      summary: replaceEmailCollection
+      operationId: replaceEmailCollectionUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: emailCollectionFileEncodedDto
+          description: emailCollectionFileEncodedDto
+          required: true
+          schema:
+            $ref: '#/definitions/EmailCollectionFileEncodedDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailCollectionDto'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    patch:
+      tags:
+        - email-collection-controller
+      summary: addToEmailCollection
+      operationId: addToEmailCollectionUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: emailCollectionFileEncodedDto
+          description: emailCollectionFileEncodedDto
+          required: true
+          schema:
+            $ref: '#/definitions/EmailCollectionFileEncodedDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailCollectionDto'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /api/v1/nosy/emailgroups/list:
+    post:
+      tags:
+        - email-collection-controller
+      summary: createEmailCollection
+      operationId: createEmailCollectionUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: emailCollectionFileEncodedDto
+          description: emailCollectionFileEncodedDto
+          required: true
+          schema:
+            $ref: '#/definitions/EmailCollectionFileEncodedDto'
+        - name: name
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailCollectionDto'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/api/v1/nosy/emailgroups/{emailCollectionId}':
+    get:
+      tags:
+        - email-collection-controller
+      summary: getEmailCollectionById
+      operationId: getEmailCollectionByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: emailCollectionId
+          in: path
+          description: emailCollectionId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailCollectionDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - email-collection-controller
+      summary: deleteEmailCollectionById
+      operationId: deleteEmailCollectionByIdUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: emailCollectionId
+          in: path
+          description: emailCollectionId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
       deprecated: false
   /api/v1/nosy/inputsystems:
     get:
@@ -553,19 +757,193 @@ paths:
         '403':
           description: Forbidden
       deprecated: false
-
+  /error:
+    get:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingGET
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    head:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingHEAD
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+    post:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingDELETE
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+    options:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingOPTIONS
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+    patch:
+      tags:
+        - basic-error-controller
+      summary: errorHtml
+      operationId: errorHtmlUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
 definitions:
-  ClientToken:
+  EmailCollection:
     type: object
     properties:
-      accessToken:
+      emailCollectionEmails:
+        type: array
+        items:
+          type: string
+      emailCollectionId:
         type: string
-      expiresIn:
-        type: integer
-        format: int32
-      refreshToken:
+      emailCollectionName:
         type: string
-    title: ClientToken
+      user:
+        $ref: '#/definitions/User'
+    title: EmailCollection
+  EmailCollectionDto:
+    type: object
+    properties:
+      emails:
+        type: array
+        items:
+          type: string
+      id:
+        type: string
+      name:
+        type: string
+    title: EmailCollectionDto
+  EmailCollectionFileEncodedDto:
+    type: object
+    properties:
+      data:
+        type: string
+      emails:
+        type: array
+        items:
+          type: string
+      name:
+        type: string
+    title: EmailCollectionFileEncodedDto
   EmailProviderProperties:
     type: object
     properties:
@@ -774,14 +1152,27 @@ definitions:
       value:
         type: string
     title: PlaceHolder
+  TokenCollectionDto:
+    type: object
+    properties:
+      accessToken:
+        type: string
+      expiresIn:
+        type: integer
+        format: int32
+      refreshToken:
+        type: string
+    title: TokenCollectionDto
   User:
     type: object
     properties:
       email:
         type: string
+      emailCollections:
+        type: array
+        items:
+          $ref: '#/definitions/EmailCollection'
       firstName:
-        type: string
-      info:
         type: string
       inputSystem:
         type: array
@@ -798,8 +1189,6 @@ definitions:
       email:
         type: string
       firstName:
-        type: string
-      info:
         type: string
       lastName:
         type: string
