@@ -142,6 +142,7 @@ Here we will configure only two things. Firstly, it is the kafka host port and N
 ```
 KAFKA_BROKER_URL=host:port`
 NOSY_ADMIN_EMAIL_TOPIC="topic for reading emails without quotes"
+KAFKA_CONSUMER_GROUP="consumer group without quotes"
 ```
 
 The second thing is username and password for default email you mentioned in nosy-admin. Please refer to Step 1. This is done because we don't want to transmit your private email password through the network
