@@ -104,13 +104,13 @@ Then go inside the user we have just created and click role mappings tab. Click 
 Keycloak Configurations is done. Now, according to our configurations for keycloak, let's set all variables.
 
 ```
-nosy.keycloak.admin.user=admin-user
-nosy.keycloak.admin.password="the password you set for the user without quotes"
-keycloak.resource = nosy-client
-keycloak.auth-server-url = http://host:8080/auth
-keycloak.realm = nosy-realm
-nosy.client.clientSecret="you can get it inside your client in credentials tab without quotes"
-nosy.client.grantType=password
+KEYCLOAK_ADMIN_USER=xxxxxx
+KEYCLOAK_ADMIN_PASSWORD=xxxxx
+KEYCLOAK_CLIENT=xxxxx
+KEYCLOAK_AUTH_URL=xxxxxxx
+KEYCLOAK_REALM=xxxxxxxx
+KEYCLOAK_CLIENT_SECRET=xxx-xxx-xxx-xxxxx-xxx
+KEYCLOAK_AUTH_URL=http://xxxxxx/xxxx
 ```
 
 <br/>
@@ -121,14 +121,14 @@ nosy.client.grantType=password
 
 We will set up plain postgres and kafka if you have some authentication in kafka please add necessary fields in application properties. For kafka please download kafka version and zookeeper and install them. You can follow instructions here: kafka After installation, please verify that kafka is exposing port if you are running remotely. If you are running locally then you can just add kafka host and port to application properties. Otherwise add ip address and port of kafka:
 
-`spring.cloud.stream.kafka.binder.brokers=host:port`
+`KAFKA_BROKER_URL=host:port`
 
 The same steps follow for Postgres. Please download postgres and create a user which can be used in our application and then create db named: nosydb(you can create any other database, but make sure you specify in application.properties) You can follow instructions here: postgres After installation please verify that postgres is exposing port if you are running remotely. If you are running locally then you can just add postgres host and port to application properties. Otherwise add ip address and port of postgres:
 
 ```
-spring.datasource.url= jdbc:postgresql://host:5432/nosydb
-spring.datasource.username="username you created without quotes"
-spring.datasource.password="password without quotes"
+DATASOURCE_URL=jdbc:postgresql://host:5432/nosydb
+DATASOURCE_USERNAME="username you created without quotes"
+DATASOURCE_PASSWORD="password without quotes"
 ```
 
 <br/>
@@ -139,10 +139,13 @@ spring.datasource.password="password without quotes"
 
 Here we will configure only two things. Firstly, it is the kafka host port which will be the same as the one previously mentioned in nosy-admin. Please refer to step 3
 
-`spring.cloud.stream.kafka.binder.brokers=host:port`
+`KAFKA_BROKER_URL=host:port`
 
-The second thing is the password for default email you mentioned in nosy-admin. Please refer to Step 1. This is done because we don't want to transmit your private email password through the network
+The second thing is username and password for default email you mentioned in nosy-admin. Please refer to Step 1. This is done because we don't want to transmit your private email password through the network
 
-`nosy.emailServiceDefault.password=xxxxxx`
+```
+NOSY_FROM_ADDRESS="default email without quotes"
+NOSY_FROM_ADDRESS_PASSWORD="default email password without quotes"
+```
 
 The configuration part is finished. Thank you!
