@@ -137,15 +137,19 @@ DATASOURCE_PASSWORD="password without quotes"
 
 #### **NoSy Email Configuration**
 
-Here we will configure only two things. Firstly, it is the kafka host port which will be the same as the one previously mentioned in nosy-admin. Please refer to step 3
+Here we will configure only two things. Firstly, it is the kafka host port and NOSY_ADMIN_EMAIL_TOPIC which will be the same as the one previously mentioned in nosy-admin. Please refer to step 3
 
-`KAFKA_BROKER_URL=host:port`
+```
+KAFKA_BROKER_URL=host:port`
+NOSY_ADMIN_EMAIL_TOPIC="topic for reading emails without quotes"
+```
 
 The second thing is username and password for default email you mentioned in nosy-admin. Please refer to Step 1. This is done because we don't want to transmit your private email password through the network
 
 ```
 NOSY_FROM_ADDRESS="default email without quotes"
 NOSY_FROM_ADDRESS_PASSWORD="default email password without quotes"
+
 ```
 
 The configuration part is finished. Thank you!
