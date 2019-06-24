@@ -4,6 +4,11 @@ title: Configuration
 
 # Configuration
 ---
+title: Configuration
+---
+
+# Configuration
+---
 
 ## **Clone**
 
@@ -15,53 +20,54 @@ Clone repository from <a href="https://github.com/oktayalizada/nosy" target="_bl
 
 ### **Step One**
 
-We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using Postgres database for persisting data. Besides that we use Kafka Streams to communicate between components. So all configurations are related to those features, if you open application.properties there are some variables which we should initialize to work with Nosy.
+We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using Postgres database for persisting data. Besides that we use Kafka Topics to communicate between components. So all configurations are related to those features will be configured via environment variables.
 
 <br />
 
 #### **Nosy Admin Configuration**
 
 ```
-default.nosy.from.address=xxx@xxx.com
-spring.datasource.url= jdbc:postgresql://xxxxx:5432/nosydb
-spring.datasource.username=xxxxx
-spring.datasource.password=xxxxx
-spring.cloud.stream.kafka.binder.brokers=xxxxxx:xxxxx
+NOSY_FROM_ADDRESS=xxx@xxx.com
+DATASOURCE_URL=jdbc:postgresql://xxxxx:5432/nosydb
+DATASOURCE_USERNAME=xxxxx
+DATASOURCE_PASSWORD=xxxxx
+KAFKA_BROKER_URL=xxxxxx:xxxxx
 ```
 
 Let's investigate each of these fields in detail
 
-`default.nosy.from.address=xxx@xxx.com`
+`NOSY_FROM_ADDRESS=xxx@xxx.com`
 
-Above mentioned field specifies what will be the default mail sender address. Keep in mind that in Nosy you can also configure default mail server address which can be linked to a private mail server. In addition you can use two more options: Gmail and Yandex. If you prefer to send emails from your private email address then this field should be initialized to your email server address. For example: test@example.com
+Above mentioned environment variable specifies what will be the default mail sender address. Keep in mind that in Nosy you can also configure default mail server address which can be linked to a private mail server. In addition you can use two more options: Gmail and Yandex. If you prefer to send emails from your private email address then this field should be initialized to your email server address. For example: test@example.com
 
-`spring.datasource.url= jdbc:postgresql://xxxxx:5432/nosydb`
+`DATASOURCE_URL=jdbc:postgresql://xxxxx:5432/nosydb`
 
 Above mentioned field specifies the address, port and database of postgress server. For example: jdbc:postgresql://127.0.0.1:5432/nosydb
 
-```
-spring.datasource.username=xxxxx
-spring.datasource.password=xxxxx
-```
-
-Above mentioned fields specify the username, password for postgres database. For example: username: nosy, password: nosy
-
-```
-nosy.keycloak.admin.user=xxxxxx
-nosy.keycloak.admin.password=xxxxx
-keycloak.resource = xxxxx
-keycloak.auth-server-url = xxxxxxx
-keycloak.realm = xxxxxxxx
-nosy.client.clientSecret=xxx-xxx-xxx-xxxxx-xxx
-nosy.client.grantType=xxxxx
-nosy.admin.keycloak.url=http://xxxxxx/xxxx
-```
-
-All fields mentioned above are related to Keycloak. We will cover configurations of Keycloak in the next section but let's first discuss what each field means in terms of configurations in nosy-admin. The first two fields are the admin user and password for specific client. For example: nosy-client-admin, password: xxxxxx. keycloak.resource is client name of nosy(e.g. nosy-client). keycloak.auth-server-url is the url to keycloak auth(e.g. https://example.com:8080/auth). keycloak.realm is the realm for nosy(e.g nosy-realm) nosy.client.clientSecret is the secret for keycloak.resource(xxxx-xxxxx-xxxx-xxxx). We will talk about it later in keycloak section. nosy.client.grantType is grant type for client(e.g. password)
-
-`spring.cloud.stream.kafka.binder.brokers=xxxxxx:xxxxx`
+`KAFKA_BROKER_URL=xxxxxx:xxxxx`
 
 Above mentioned field specifies the address and port of Kafka broker for streaming. For example: example.com:9092
+
+```
+DATASOURCE_USERNAME=xxxxx
+DATASOURCE_PASSWORD=xxxxx
+```
+
+Above mentioned environment variables specify the username, password for postgres database. For example: username: nosy, password: nosy
+
+```
+KEYCLOAK_ADMIN_USER=xxxxxx
+KEYCLOAK_ADMIN_PASSWORD=xxxxx
+KEYCLOAK_CLIENT=xxxxx
+KEYCLOAK_AUTH_URL=xxxxxxx
+KEYCLOAK_REALM=xxxxxxxx
+KEYCLOAK_CLIENT_SECRET=xxx-xxx-xxx-xxxxx-xxx
+KEYCLOAK_AUTH_URL=http://xxxxxx/xxxx
+```
+
+All environment variables mentioned above are related to Keycloak. We will cover configurations of Keycloak in the next section but let's first discuss what each field means in terms of configurations in nosy-admin. The first two fields are the admin user and password for specific client. For example: nosy-client-admin, password: xxxxxx. keycloak.resource is client name of nosy(e.g. nosy-client). keycloak.auth-server-url is the url to keycloak auth(e.g. https://example.com:8080/auth). keycloak.realm is the realm for nosy(e.g nosy-realm) nosy.client.clientSecret is the secret for keycloak.resource(xxxx-xxxxx-xxxx-xxxx). We will talk about it later in keycloak section.
+
+
 
 <br/>
 
