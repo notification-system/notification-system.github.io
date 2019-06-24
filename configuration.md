@@ -15,7 +15,7 @@ Clone repository from <a href="https://github.com/oktayalizada/nosy" target="_bl
 
 ### **Step One**
 
-We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using Postgres database for persisting data. Besides that we use Kafka Streams to communicate between components. So all configurations are related to those features, if you open application.properties there are some variables which we should initialize to work with Nosy.
+We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using PostgreSQL database for persisting data. Besides that we use Kafka Streams to communicate between components. So all configurations are related to those features, if you open application.properties there are some variables which we should initialize to work with Nosy.
 
 <br />
 
@@ -37,14 +37,14 @@ Above mentioned field specifies what will be the default mail sender address. Ke
 
 `spring.datasource.url= jdbc:postgresql://xxxxx:5432/nosydb`
 
-Above mentioned field specifies the address, port and database of postgress server. For example: jdbc:postgresql://127.0.0.1:5432/nosydb
+Above mentioned field specifies the address, port and database of postgreSQL server. For example: jdbc:postgresql://127.0.0.1:5432/nosydb
 
 ```
 spring.datasource.username=xxxxx
 spring.datasource.password=xxxxx
 ```
 
-Above mentioned fields specify the username, password for postgres database. For example: username: nosy, password: nosy
+Above mentioned fields specify the username, password for postgreSQL database. For example: username: nosy, password: nosy
 
 ```
 nosy.keycloak.admin.user=xxxxxx
@@ -69,7 +69,7 @@ Above mentioned field specifies the address and port of Kafka broker for streami
 
 #### **Keycloak configuration for nosy-admin**
 
-This section will talk about keycloak configurations we need to do in order to make nosy-admin work. Keycloak is open source readhat IAM. You can refer to documentation of Keycloak by going to the following link: Keycloak Docs For api specs please refer to: Keycloak API Spec
+This section will talk about keycloak configurations we need to do in order to make nosy-admin work. Keycloak is open source red hat IAM. You can refer to documentation of Keycloak by going to the following link: Keycloak Docs For API specs please refer to: Keycloak API Spec
 
 Keycloak is open solution tool which plays role of security in nosy system. For more information you can refer to docs, here we will cover configuration for nosy. First of all, we have to create realm which will be used as a security for NoSy. Please bear in mind, this configurations will directly affect configurations of nosy-admin which we did above. To create realm go to Keycloak admin page and on the left corner press add realm. let's call our realm nosy-realm.
 
@@ -111,13 +111,13 @@ nosy.client.grantType=password
 
 ### **Step Three**
 
-#### **Postgres and Kafka configurations for NoSy**
+#### **PostgreSQL and Kafka configurations for NoSy**
 
-We will set up plain postgres and kafka if you have some authentication in kafka please add necessary fields in application properties. For kafka please download kafka version and zookeeper and install them. You can follow instructions here: kafka After installation, please verify that kafka is exposing port if you are running remotely. If you are running locally then you can just add kafka host and port to application properties. Otherwise add ip address and port of kafka:
+We will set up plain PostgreSQL and Kafka if you have some authentication in Kafka please add necessary fields in application properties. For Kafka please download Kafka version and zookeeper and install them. You can follow instructions here: Kafka After installation, please verify that Kafka is exposing port if you are running remotely. If you are running locally then you can just add Kafka host and port to application properties. Otherwise add ip address and port of Kafka:
 
 `spring.cloud.stream.kafka.binder.brokers=host:port`
 
-The same steps follow for Postgres. Please download postgres and create a user which can be used in our application and then create db named: nosydb(you can create any other database, but make sure you specify in application.properties) You can follow instructions here: postgres After installation please verify that postgres is exposing port if you are running remotely. If you are running locally then you can just add postgres host and port to application properties. Otherwise add ip address and port of postgres:
+The same steps follow for PostgreSQL. Please download PostgreSQL and create a user which can be used in our application and then create DB named: nosydb(you can create any other database, but make sure you specify in application.properties) You can follow instructions here: PostgreSQL After installation please verify that PostgreSQL is exposing port if you are running remotely. If you are running locally then you can just add PostgreSQL host and port to application properties. Otherwise add ip address and port of PostgreSQL:
 
 ```
 spring.datasource.url= jdbc:postgresql://host:5432/nosydb
@@ -131,7 +131,7 @@ spring.datasource.password="password without quotes"
 
 #### **NoSy Email Configuration**
 
-Here we will configure only two things. Firstly, it is the kafka host port which will be the same as the one previously mentioned in nosy-admin. Please refer to step 3
+Here we will configure only two things. Firstly, it is the Kafka host port which will be the same as the one previously mentioned in nosy-admin. Please refer to step 3
 
 `spring.cloud.stream.kafka.binder.brokers=host:port`
 
