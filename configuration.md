@@ -4,11 +4,6 @@ title: Configuration
 
 # Configuration
 ---
-title: Configuration
----
-
-# Configuration
----
 
 ## **Clone**
 
@@ -20,7 +15,7 @@ Clone repository from <a href="https://github.com/oktayalizada/nosy" target="_bl
 
 ### **Step One**
 
-We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using Postgres database for persisting data. Besides that we use Kafka Topics to communicate between components. So all configurations are related to those features will be configured via environment variables.
+We start configuring nosy-admin. Configuration is pretty straightforward, if you recall Architecture page Nosy admin is protected by Keycloak and using PostgreSQL database for persisting data. Besides that we use Kafka Topics to communicate between components. So all configurations are related to those features will be configured via environment variables.
 
 <br />
 
