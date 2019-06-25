@@ -1,0 +1,10 @@
+# Ignore jekyll build folders
+_site
+public
+
+# Remove ruby gem file
+Gemfile.lock
+
+# Ignore dockerfile
+Dockerfile
+.dockerignore
