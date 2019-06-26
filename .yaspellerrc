@@ -9,7 +9,9 @@
     "openid",
     "zookeeper",
     "CC",
-    "base64"
+    "base64",
+    "npm",
+    "yaspellerrc"
   ],
   "fileExtensions": [
     ".md"
@@ -18,7 +20,8 @@
     ["^`{3}([\\S]+)?([\\s\\S]+)`{3}", "gm"]
   ],
   "excludeFiles": [
-    "node_modules"
+    "node_modules",
+    ".history"
   ],
   "ignoreUrls": true
 }
