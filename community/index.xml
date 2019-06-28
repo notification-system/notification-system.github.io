@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nosy Docs – Community</title>
+    <link>http://notification-system.github.io/community/</link>
+    <description>Recent Hugo news from gohugo.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <image>
+      <url>http://notification-system.github.io/img/hugo.png</url>
+      <title>GoHugo.io</title>
+      <link>http://notification-system.github.io/community/</link>
+    </image>
+    
+	  <atom:link href="http://notification-system.github.io/community/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

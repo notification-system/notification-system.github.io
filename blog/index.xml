@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nosy Docs – News</title>
+    <link>http://notification-system.github.io/blog/</link>
+    <description>Recent Hugo news from gohugo.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <image>
+      <url>http://notification-system.github.io/img/hugo.png</url>
+      <title>GoHugo.io</title>
+      <link>http://notification-system.github.io/blog/</link>
+    </image>
+    
+	  <atom:link href="http://notification-system.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: Documentation</title>
+      <link>http://notification-system.github.io/blog/documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://notification-system.github.io/blog/documentation/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/instructions/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/releases/release-1.0.0/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/usage/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/releases/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/docs/interface/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/community/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/blog/documentation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notification-system.github.io/</loc>
+  </url>
+  
+</urlset>
